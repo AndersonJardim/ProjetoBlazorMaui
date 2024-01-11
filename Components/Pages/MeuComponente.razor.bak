@@ -1,0 +1,29 @@
+@page "/demo"
+@* @attribute [RenderModeAuto] -- isso aqui nao parece existir poara MAUI. Apenas no BLAZOR WASM*@
+
+<h1>Demo - RenderModeAuto</h1>
+<br>
+
+<input type="text" value="@inputValor" @oninput="AtualizaValor"  />
+<button @onclick="AtribuiValor">Salvar</button>
+
+<br>
+<br>
+<h3>O valor é: @Valor</h3>
+
+@code{
+    public string? Valor {get;set;}
+    public string? inputValor {get;set;}
+
+
+    public void AtualizaValor(ChangeEventArgs e)
+    {
+        inputValor = e.Value.ToString();
+    }
+
+    private void AtribuiValor()
+    {
+        Valor = inputValor;
+        StateHasChanged();
+    }
+}
